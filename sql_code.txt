@@ -1,0 +1,26 @@
+--------------------------------------------------------------------------
+creation des tables :
+******************************
+CREATE TABLE departement (
+  id INT PRIMARY KEY,
+  nom VARCHAR(50)
+);
+*****************************
+CREATE TABLE filière (
+  id INT PRIMARY KEY,
+  nom VARCHAR(50),
+  département_id INT,
+  FOREIGN KEY (departement_id) REFERENCES departement(id)
+);
+***********************************************************
+CREATE TABLE étudiant (
+  CNE INT PRIMARY KEY,
+  nom VARCHAR(50),
+  prénom VARCHAR(50),
+  filière_id INT,
+  département_id INT,
+  téléphone VARCHAR(15),
+  FOREIGN KEY (filière_id) REFERENCES filière(id),
+  FOREIGN KEY (departement_id) REFERENCES departement(id)
+);
+---------------------------------------------------------------------------------------
