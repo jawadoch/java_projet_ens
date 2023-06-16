@@ -6,21 +6,37 @@ CREATE TABLE departement (
   nom VARCHAR(50)
 );
 *****************************
-CREATE TABLE filière (
+CREATE TABLE filiere (
   id INT PRIMARY KEY,
   nom VARCHAR(50),
   département_id INT,
   FOREIGN KEY (departement_id) REFERENCES departement(id)
 );
 ***********************************************************
-CREATE TABLE étudiant (
+CREATE TABLE etudiant (
   CNE INT PRIMARY KEY,
   nom VARCHAR(50),
   prénom VARCHAR(50),
   filière_id INT,
   département_id INT,
   téléphone VARCHAR(15),
-  FOREIGN KEY (filière_id) REFERENCES filière(id),
-  FOREIGN KEY (departement_id) REFERENCES departement(id)
+  FOREIGN KEY (filiere_id) REFERENCES ens.filiere(id),
+  FOREIGN KEY (departement_id) REFERENCES ens.departement(id)
 );
 ---------------------------------------------------------------------------------------
+ Quelques insertions pour remplir de données. pour la base de donnees
+INSERT INTO ens.departement (id, nom)
+VALUES (1, 'Science');
+
+INSERT INTO ens.departement (id, nom)
+VALUES (2, 'Lettres');
+***************************************************************
+INSERT INTO ens.filiere (id, nom, département_id)
+VALUES (1, 'Informatique', 1);
+
+INSERT INTO ens.filiere (id, nom, département_id)
+VALUES (2, 'Biologie', 1);
+
+INSERT INTO ens.filiere (id, nom, département_id)
+VALUES (3, 'Linguistique', 2);
+******************************************************************
